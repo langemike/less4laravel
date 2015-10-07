@@ -21,13 +21,12 @@ class Less {
 	public function link($filename, $attributes = array()) {
 		$compiler = new lessc;
 		$compiler->setFormatter($this->config->get('less4laravel.formatter', 'lessjs'));
-		$basePath = base_path();
 		$sourceFolder = $this->config->get('less4laravel.source_folder');
 		$targetFolder = $this->config->get('less4laravel.target_folder');
 		$cacheFolder = $this->config->get('less4laravel.cache_folder');
-		$in = "$basePath/$sourceFolder/$filename.less";
-		$out = "$basePath/$targetFolder/$filename.css";
-		$cache = "$basePath/$cacheFolder/$filename.less.cache";
+		$in = $sourceFolder.DIRECTORY_SEPARATOR.$filename'.less';
+		$out = $targetFolder.DIRECTORY_SEPARATOR.$filename.'.css';
+		$cache = $cacheFolder.DIRECTORY_SEPARATOR.$filename.'less.cache';
 		switch ($this->config->get('less4laravel.compile_frequency')) {
 			case "all":
 				$compiler->compileFile($in, $out);
@@ -37,7 +36,7 @@ class Less {
 				break;
 			case "cached":
 			/*
-			From Lessphp docs: For this reason we also have cachedCompile. It’s slightly more complex, but gives us the ability to check changes to all files including those imported. It takes one argument, either the name of the file we want to compile, or an existing cache object. Its return value is an updated cache object.
+			From Lessphp docs: For this reason we also have cachedCompile. Itâ€™s slightly more complex, but gives us the ability to check changes to all files including those imported. It takes one argument, either the name of the file we want to compile, or an existing cache object. Its return value is an updated cache object.
 			J.T. says: seriously? the same variable used for two totally different things? I hate this.
 			*/
 				if (file_exists($cache)) {
