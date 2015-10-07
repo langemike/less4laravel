@@ -29,7 +29,7 @@ return array(
     | Where should we look for .less files?
     | default: resources/assets/less
     */
-    'source_folder' => 'resources/assets/less',
+    'source_folder' => base_path('resources/assets/less'),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ return array(
     | Where should we save compiled css files?
     | default: public/css
     */
-    'target_folder' => 'public/css',
+    'target_folder' => public_path('css'),
 
     /*
     |--------------------------------------------------------------------------
@@ -49,7 +49,7 @@ return array(
     | Where should we save cache file?
     | default: storage/framework/cache
     */
-    'cache_folder' => 'storage/framework/cache',
+    'cache_folder' => storage_path('framework/cache'),
 
     /*
     |--------------------------------------------------------------------------
