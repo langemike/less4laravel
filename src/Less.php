@@ -24,7 +24,7 @@ class Less {
 		$sourceFolder = $this->config->get('less4laravel.source_folder');
 		$targetFolder = $this->config->get('less4laravel.target_folder');
 		$cacheFolder = $this->config->get('less4laravel.cache_folder');
-		$in = $sourceFolder.DIRECTORY_SEPARATOR.$filename'.less';
+		$in = $sourceFolder.DIRECTORY_SEPARATOR.$filename.'.less';
 		$out = $targetFolder.DIRECTORY_SEPARATOR.$filename.'.css';
 		$cache = $cacheFolder.DIRECTORY_SEPARATOR.$filename.'less.cache';
 		switch ($this->config->get('less4laravel.compile_frequency')) {
